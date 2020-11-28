@@ -1,6 +1,5 @@
 import {
   LoremIpsum,
-  // eslint-disable-next-line
 } from 'lorem-ipsum';
 
 import dbConnect from '../src/db';

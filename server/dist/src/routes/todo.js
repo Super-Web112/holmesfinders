@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const pagination_config_1 = require("../schema/pagination-config");
 const Todo_1 = __importDefault(require("../schema/Todo"));
 function escapeRegex(input) {
-    // eslint-disable-next-line no-useless-escape
     return input.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 }
 const getPaginationOptions = (query) => {

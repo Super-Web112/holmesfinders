@@ -4,7 +4,7 @@
       <div class="md-layout">
         <div class="md-layout-item">
           <div class="container">
-            <p>Find a home <span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
+            <!-- <p>Find a home <span class="typed-text"></span><span class="cursor">&nbsp;</span></p> -->
           </div>
         </div>
       </div>
@@ -18,6 +18,7 @@
           <!-- <basic-elements></basic-elements> -->
         </div>
       </div>
+
       <div class="section section-navbars">
         <div class="container">
           <!-- <small-navigation></small-navigation> -->
@@ -76,62 +77,22 @@
 <script>
 // import BasicElements from "./components/BasicElementsSection";
 
-
 export default {
-
   name: "index",
   bodyClass: "index-page",
   props: {
     image: {
       type: String,
       default: require("@/assets/img/real-estate.jpg")
-    },
-    leaf4: {
-      type: String,
-      default: require("@/assets/img/leaf4.png")
-    },
-    leaf3: {
-      type: String,
-      default: require("@/assets/img/leaf3.png")
-    },
-    leaf2: {
-      type: String,
-      default: require("@/assets/img/leaf2.png")
-    },
-    leaf1: {
-      type: String,
-      default: require("@/assets/img/leaf1.png")
-    },
-    signup: {
-      type: String,
-      default: require("@/assets/img/city.jpg")
-    },
-    landing: {
-      type: String,
-      default: require("@/assets/img/landing.jpg")
-    },
-    profile: {
-      type: String,
-      default: require("@/assets/img/profile.jpg")
     }
   },
-  created(){
-    setInterval(this.letterAnimation, 1000);
-  },
+
   data() {
     return {
       firstname: null,
       email: null,
       password: null,
-      leafShow: false,
-      typed_text_flag_i:0,
-      typed_text_flag_j:0,
-      content_text:["that fulfill your needs", "with great investment plans", "with smart choices", "with an amazing ambience"],
-      typed_text_span : this.$el.getElementsByClassName("typed-text")[0],
-      typed_text_adding: true,
-      cursor_text: this.$el.getElementsByClassName("cursor")[0],
-      text: "",
-      typed_text_len : 0
+      leafShow: false
     };
   },
   methods: {
@@ -140,31 +101,6 @@ export default {
         this.leafShow = false;
       } else {
         this.leafShow = true;
-      }
-    },
-    
-  letterAnimation: function() {
-        console.log(this.typed_text_flag_j)
-        if(this.typed_text_adding){
-        if(this.typed_text_flag_j>3) this.typed_text_flag_j=0;
-        this.text = this.content_text[this.typed_text_flag_j];
-        this.typed_text_len = this.text.length;
-        this.text = "          " + this.text + "          ";
-        if(this.typed_text_flag_i<(this.typed_text_len+20)){
-          if(this.typed_text_flag_i==10) this.cursor_text.classList.add("typing");
-          if(this.typed_text_flag_i<10) if(this.cursor_text.classList.contains("typing")) this.cursor_text.classList.remove("typing");
-          if(this.typed_text_flag_i>(10 + this.typed_text_len)) if(this.cursor_text.classList.contains("typing")) this.cursor_text.classList.remove("typing");
-          this.typed_text_span.innerHTML = this.typed_text_span.innerHTML + text[this.typed_text_flag_i];
-          this.typed_text_flag_i++;
-        }else {this.typed_text_adding = false;}
-      }else{
-        if(this.typed_text_flag_i>=0){
-          if(this.typed_text_flag_i==(10 + this.typed_text_len)) this.cursor_text.classList.add("typing");
-          if(this.typed_text_flag_i<10) if(this.cursor_text.classList.contains("typing")) this.cursor_text.classList.remove("typing");
-          if(this.typed_text_flag_i>(10 + this.typed_text_len)) if(this.cursor_text.classList.contains("typing")) this.cursor_text.classList.remove("typing");
-          this.typed_text_span.innerHTML = text.slice(0, this.typed_text_flag_i);
-          this.typed_text_flag_i--;
-        }else {this.typed_text_adding = true;this.typed_text_flag_i=0;this.typed_text_flag_j++;}
       }
     }
   },

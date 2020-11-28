@@ -9,7 +9,6 @@ import { labels as paginationLabels, defaultValues } from '../schema/pagination-
 import Todo from '../schema/Todo';
 
 function escapeRegex(input: string): string {
-  // eslint-disable-next-line no-useless-escape
   return input.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 }
 
