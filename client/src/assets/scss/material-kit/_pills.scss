@@ -16,7 +16,7 @@
     > li {
         > a{
             line-height: $mdb-btn-font-size-base * 2;
-            text-transform: uppercase;
+            text-transform: none;
             font-size: $mdb-btn-font-size-base;
             font-weight: $font-weight-bold;
             min-width: 100px;

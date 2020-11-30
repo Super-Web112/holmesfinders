@@ -8,32 +8,32 @@
         <div class="md-layout-item">
           <div class="tim-typo">
             <h1>
-              <span class="tim-note">Header 1</span>The Life of Material Kit
+              <span class="tim-note">Header 1</span>The Life of HolmesFinders
             </h1>
           </div>
           <div class="tim-typo">
             <h2>
-              <span class="tim-note">Header 2</span>The Life of Material Kit
+              <span class="tim-note">Header 2</span>The Life of HolmesFinders
             </h2>
           </div>
           <div class="tim-typo">
             <h3>
-              <span class="tim-note">Header 3</span>The Life of Material Kit
+              <span class="tim-note">Header 3</span>The Life of HolmesFinders
             </h3>
           </div>
           <div class="tim-typo">
             <h4>
-              <span class="tim-note">Header 4</span>The Life of Material Kit
+              <span class="tim-note">Header 4</span>The Life of HolmesFinders
             </h4>
           </div>
           <div class="tim-typo">
             <h5>
-              <span class="tim-note">Header 5</span>The Life of Material Kit
+              <span class="tim-note">Header 5</span>The Life of HolmesFinders
             </h5>
           </div>
           <div class="tim-typo">
             <h6>
-              <span class="tim-note">Header 6</span>The Life of Material Kit
+              <span class="tim-note">Header 6</span>The Life of HolmesFinders
             </h6>
           </div>
           <div class="tim-typo">

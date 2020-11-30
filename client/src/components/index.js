@@ -5,8 +5,8 @@ import Slider from "./Slider.vue";
 import Badge from "./Badge.vue";
 import NavTabsCard from "./cards/NavTabsCard.vue";
 import LoginCard from "./cards/LoginCard.vue";
-import Tabs from "./Tabs.vue";
 import Modal from "./Modal.vue";
+import Tabs from "./Tabs"
 
 export {
   DropDown,
@@ -16,6 +16,6 @@ export {
   Badge,
   NavTabsCard,
   LoginCard,
-  Tabs,
-  Modal
+  Modal,
+  Tabs
 };

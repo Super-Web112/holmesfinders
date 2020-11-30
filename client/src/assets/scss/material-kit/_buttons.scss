@@ -8,7 +8,7 @@
 
     font-size: $mdb-btn-font-size-base;
     font-weight: 400;
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 0;
 
     @include social-buttons();

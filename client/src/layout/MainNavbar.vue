@@ -1,255 +1,186 @@
 <template>
-  <md-toolbar
-    id="toolbar"
-    md-elevation="0"
-    class="md-transparent md-absolute"
-    :class="extraNavClasses"
-    :color-on-scroll="colorOnScroll"
-  >
-    <div class="md-toolbar-row md-collapse-lateral">
-      <div class="md-toolbar-section-start nav-bar-height ">
-        
-        <h3 class=" nav-bar-color md-logo "><img :src="mark" class="logo-position"/></h3>
-      </div>
-      <div class="md-toolbar-section-end">
-        <md-button
-          class="md-just-icon md-simple md-toolbar-toggle"
-          :class="{ toggled: toggledClass }"
-          @click="toggleNavbarMobile()"
-        >
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </md-button>
+  <div>
+  <b-navbar toggleable="lg" type="dark" variant="info">
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+    <b-navbar-brand href="#"><img src="@/assets/img/logo.png" class="logo-position" alt="logo img"/></b-navbar-brand>
 
-        <div class="md-collapse">
-          <div class="md-collapse-wrapper">
-            <mobile-menu nav-mobile-section-start="false">
-              <!-- Here you can add your items from the section-start of your toolbar -->
-            </mobile-menu>
-            <md-list>
-             
-              <md-list-item
-                href="#"
-                v-if="showDownload"
-                class="top-bar-border"
-              >
-                <!-- <i class="material-icons">cloud_download</i> -->
-                 Post Property Free
-              </md-list-item>
+    <b-collapse id="nav-collapse" is-nav>
 
-              <!--   /////////////////////////////////////////////////////////    -->
-                      <li class="md-list-item">
-                        <a
-                          href="javascript:void(0)"
-                          class="md-list-item-router md-list-item-container md-button-clean dropdown"
-                        >
-                          <div class="md-list-item-content">
-                            <drop-down direction="down" class="profile-photo">
-                              <div
-                                class="profile-photo-small"
-                                slot="title"
-                                data-toggle="dropdown"
-                              >
-                                <img :src="img" alt="Circle Image" />
-                              </div>
-                              <ul class="dropdown-menu dropdown-menu-right">
-                                <li class="dropdown-header">Dropdown header</li>
-                                <li>
-                                  <a href="#" class="dropdown-item">Me</a>
-                                </li>
-                                <li>
-                                  <a href="#" class="dropdown-item"
-                                    >Settings and other stuff</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="#" class="dropdown-item"
-                                    >Sign Out</a
-                                  >
-                                </li>
-                              </ul>
-                            </drop-down>
-                          </div>
-                        </a>
-                      </li>
-              
-              <!-- <md-list-item
-                href="https://twitter.com/CreativeTim"
-                target="_blank"
-              >
-                <i class="fab fa-twitter"></i>
-                <p class="hidden-lg">Twitter</p>
-                <md-tooltip md-direction="bottom"
-                  >Follow us on Twitter</md-tooltip
-                >
-              </md-list-item>
-              <md-list-item
-                href="https://www.facebook.com/CreativeTim"
-                target="_blank"
-              >
-                <i class="fab fa-facebook-square"></i>
-                <p class="hidden-lg">Facebook</p>
-                <md-tooltip md-direction="bottom"
-                  >Like us on Facebook</md-tooltip
-                >
-              </md-list-item>
-              <md-list-item
-                href="https://www.instagram.com/CreativeTimOfficial"
-                target="_blank"
-              >
-                <i class="fab fa-instagram"></i>
-                <p class="hidden-lg">Instagram</p>
-                <md-tooltip md-direction="bottom"
-                  >Follow us on Instagram</md-tooltip
-                >
-              </md-list-item> -->
-            </md-list>
-          </div>
-        </div>
-      </div>
-    </div>
-  </md-toolbar>
+      <!-- Right aligned nav items -->
+      <b-navbar-nav>
+        <b-nav-item-dropdown text="Buy" left>
+          <b-dropdown-item href="#">Buy with holmesfinders</b-dropdown-item>
+          <b-dropdown-item href="#">Home buying guide</b-dropdown-item>
+          <b-dropdown-item href="#">Indian housing market</b-dropdown-item>
+        </b-nav-item-dropdown>
+        <b-nav-item-dropdown text="Sell" left>
+          <b-dropdown-item href="#">Sell with holmesfinders</b-dropdown-item>
+          <b-dropdown-item href="#">Home selling guide</b-dropdown-item>
+          <b-dropdown-item href="#">Holmesfinders estimates</b-dropdown-item>
+        </b-nav-item-dropdown>
+        <b-nav-item-dropdown text="Cities" left>
+          <b-dropdown-item href="#">EN</b-dropdown-item>
+          <b-dropdown-item href="#">ES</b-dropdown-item>
+          <b-dropdown-item href="#">RU</b-dropdown-item>
+          <b-dropdown-item href="#">FA</b-dropdown-item>
+        </b-nav-item-dropdown>
+        <b-nav-item-dropdown text="Office Spaces" left>
+          <b-dropdown-item href="#">EN</b-dropdown-item>
+          <b-dropdown-item href="#">ES</b-dropdown-item>
+          <b-dropdown-item href="#">RU</b-dropdown-item>
+          <b-dropdown-item href="#">FA</b-dropdown-item>
+        </b-nav-item-dropdown>
+        <b-nav-item-dropdown text="Property Spaces" left>
+          <b-dropdown-item href="#">Home loans</b-dropdown-item>
+          <b-dropdown-item href="#">Advertise</b-dropdown-item>
+          <b-dropdown-item href="#">Home cleaning</b-dropdown-item>
+          <b-dropdown-item href="#">Sanitisation</b-dropdown-item>
+        </b-nav-item-dropdown>
+        <b-nav-item-dropdown text="News and Insights" left>
+          <b-dropdown-item href="/#/admin">Real estate news</b-dropdown-item>
+          <b-dropdown-item href="#">Home improvement</b-dropdown-item>
+          <b-dropdown-item href="#">Finance</b-dropdown-item>
+          <b-dropdown-item href="#">Buying</b-dropdown-item>
+          <b-dropdown-item href="#">Selling</b-dropdown-item>
+        </b-nav-item-dropdown>
+      </b-navbar-nav>
+      <b-navbar-nav class="ml-right">
+        <b-nav-item class="btn btn-danger">Post Property Free</b-nav-item>
+        <b-nav-item id="btn-register" class="btn">Register/Login</b-nav-item>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
+</div>
 </template>
 
-<script>
-let resizeTimeout;
-function resizeThrottler(actualResizeHandler) {
-  // ignore resize events as long as an actualResizeHandler execution is in the queue
-  if (!resizeTimeout) {
-    resizeTimeout = setTimeout(() => {
-      resizeTimeout = null;
-      actualResizeHandler();
 
-      // The actualResizeHandler will execute at a rate of 15fps
-    }, 66);
-  }
+<style>
+div nav.bg-info {
+  background-color: #FFFFFF !important;
 }
-
-import MobileMenu from "@/layout/MobileMenu";
-export default {
-  components: {
-    MobileMenu
-  },
-  props: {
-    type: {
-      type: String,
-      default: "white",
-      validator(value) {
-        return [
-          "white",
-          "default",
-          "primary",
-          "danger",
-          "success",
-          "warning",
-          "info"
-        ].includes(value);
-      }
-    },
-    colorOnScroll: {
-      type: Number,
-      default: 0
-    },
-    mark: {
-      type: String,
-      default: require("@/assets/img/logo.png")
-    },
-      img: {
-        type: String,
-        default: require("@/assets/img/faces/avatar.jpg")
-      }
-  },
-  data() {
-    return {
-      extraNavClasses: "",
-      toggledClass: false
-    };
-  },
-  computed: {
-    showDownload() {
-      const excludedRoutes = ["login", "landing", "profile"];
-      return excludedRoutes.every(r => r !== this.$route.name);
-    }
-  },
-  methods: {
-    bodyClick() {
-      let bodyClick = document.getElementById("bodyClick");
-
-      if (bodyClick === null) {
-        let body = document.querySelector("body");
-        let elem = document.createElement("div");
-        elem.setAttribute("id", "bodyClick");
-        body.appendChild(elem);
-
-        let bodyClick = document.getElementById("bodyClick");
-        bodyClick.addEventListener("click", this.toggleNavbarMobile);
-      } else {
-        bodyClick.remove();
-      }
-    },
-    toggleNavbarMobile() {
-      this.NavbarStore.showNavbar = !this.NavbarStore.showNavbar;
-      this.toggledClass = !this.toggledClass;
-      this.bodyClick();
-    },
-    handleScroll() {
-      let scrollValue =
-        document.body.scrollTop || document.documentElement.scrollTop;
-      let navbarColor = document.getElementById("toolbar");
-      this.currentScrollValue = scrollValue;
-      if (this.colorOnScroll > 0 && scrollValue > this.colorOnScroll) {
-        this.extraNavClasses = `md-${this.type}`;
-        navbarColor.classList.remove("md-transparent");
-      } else {
-        if (this.extraNavClasses) {
-          this.extraNavClasses = "";
-          navbarColor.classList.add("md-transparent");
-        }
-      }
-    },
-    scrollListener() {
-      resizeThrottler(this.handleScroll);
-    },
-    scrollToElement() {
-      let element_id = document.getElementById("downloadSection");
-      if (element_id) {
-        element_id.scrollIntoView({ block: "end", behavior: "smooth" });
-      }
-    }
-  },
-  mounted() {
-    document.addEventListener("scroll", this.scrollListener);
-  },
-  beforeDestroy() {
-    document.removeEventListener("scroll", this.scrollListener);
-  }
-};
-</script>
-<style lang="scss">
-.nav-bar-color {
-  color:black;
+.navbar-brand{
+  width: 240px !important;
+  height: 70px !important;
 }
 .logo-position{
-  width: 270px;
+  width: 240px !important;
+  height: 70px !important;
+  margin-top: -12px;
+}
+nav.navbar>div>ul>li>a>span{
+  line-height: 40px;
+  height: 40px;
+  padding: 0px 10px 0px 10px;
+  width: auto;
+  color: #222;
+  text-transform: none;
+  text-decoration: none;
+  text-align: left;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: normal;
+  outline: none;
+}
+nav.navbar>div>ul>li>a:hover::after{
+  color: #222;
+}
+nav.navbar>div>ul>li>a::after{
+  color: #222;
+  font-size: 12px;
+}
+.navbar-nav > li > ul.dropdown-menu{
+  opacity: 0;
+  z-index: -1;
+  transform: translate(0, 10px);
+  transition: opacity 200ms ease-in, transform 200ms ease-in, visibility 200ms ease-in;
 }
 
-.nav-bar-height{
-  height: 35px;
+.navbar-nav > li > ul.dropdown-menu.show{
+  opacity: 1;
+  z-index: 1000;
+  transform: translate(0, 0);
 }
-
-.top-bar-border{
-    color: white !important;
-    border-radius: 10px;
-    border-color: black;
-    background-color: #d1484e;
-    margin-right: 20px;
+ul.navbar-nav.ml-right{
+  margin-left: auto;
 }
-
-.md-logo{
-  height: 100px !important;
-  margin-top: 35px !important;
-  margin-bottom: 0px I !important;
+li.btn{
+  padding:0 15px;
+  height: 40px;
+  margin-top: 5px;
+  font-weight: 700;
+  float: right;
+  line-height: 40px;
 }
-
+li.btn>a{
+  color: #FFF !important;
+  padding: 0px;
+}
+li.btn#btn-register{
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+li.btn#btn-register>a{
+  color: #dc3545 !important;
+}
+@media (max-width: 992px){
+  div nav.bg-info {
+    background-color: #d1d1d1 !important;
+  }
+  nav.navbar .navbar-brand{
+    position: relative;
+    margin: auto;
+  }
+  nav.navbar .navbar-toggler{
+    position: relative;
+    left: 0px;
+  }
+  nav.navbar #nav-collapse{
+    position: fixed;
+    top: 86px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 10005;
+    background-color: transparent;
+  }
+  nav.navbar #nav-collapse>ul{
+    background-color: #FFF;
+    z-index: -1;
+    overflow-y: scroll;
+    width: 300px;
+    height: 100%;
+  }
+  nav.navbar #nav-collapse.show{
+    z-index: 10005;
+  }
+  nav.navbar #nav-collapse>ul>li>a{
+    margin: 4px;
+    padding: 0px;
+  }
+  nav.navbar #nav-collapse ul li>a:hover{
+    background-color: #4caf50;
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+    
+    border-radius: 2px;
+  }
+  nav.navbar #nav-collapse ul li>a:hover>span{
+    color:white;
+  }
+  nav.navbar #nav-collapse ul li ul{
+    background-color: transparent;
+    display: none;
+  }
+  nav.navbar #nav-collapse ul li ul.dropdown-menu.show{
+    display: block;
+    border:none;
+    margin:0px 10px;
+    margin-left: 10px;
+    box-shadow: none;
+    visibility: visible;
+  }
+}
 </style>

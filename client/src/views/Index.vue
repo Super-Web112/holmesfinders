@@ -1,98 +1,138 @@
 <template>
   <div class="wrapper">
-    <parallax class="page-header header-filter" :style="headerStyle">
-      <div class="md-layout">
-        <div class="md-layout-item">
-          <div class="container">
-            <!-- <p>Find a home <span class="typed-text"></span><span class="cursor">&nbsp;</span></p> -->
-          </div>
-        </div>
+    <total-search></total-search>
+    <!-- bodysection -->
+    <body-section></body-section>
+
+    <!-- Welcome----section -->
+    <welcome-element></welcome-element>
+    <!-- Carousel---section -->
+    <div class="section section-carousel">
+      <div class="section-title">
+        <h2>Check Our Featured Listing</h2>
+        <p>Get The Name Of The Best Real Estate Projects In Your Area</p>
       </div>
-    </parallax>
-    <div class="main main-raised">
-      <div class="section section-basic">
-        <div class="container">
-          <div class="title">
-            <h2>Basic Elements</h2>
-          </div>
-          <!-- <basic-elements></basic-elements> -->
-        </div>
+      
+      <div class="elementor-container">
+        <carousel 
+          :per-page=perPagee 
+          :mouse-drag="true" 
+          :autoplay="false" 
+          :loop="true" 
+          :scrollPerPage="false"
+        >
+          <slide class="col-sm-4">
+            <carousel-element></carousel-element>
+          </slide>
+          <slide class="col-sm-4">
+            <carousel-element></carousel-element>
+          </slide>
+          <slide class="col-sm-4">
+            <carousel-element></carousel-element>
+          </slide>
+          <slide class="col-sm-4">
+            <carousel-element></carousel-element>
+          </slide>
+          <slide class="col-sm-4">
+            <carousel-element></carousel-element>
+          </slide>
+          <slide class="col-sm-4">
+            <carousel-element></carousel-element>
+          </slide>
+        </carousel>
       </div>
 
-      <div class="section section-navbars">
-        <div class="container">
-          <!-- <small-navigation></small-navigation> -->
-        </div>
-        <!-- <navigation></navigation> -->
-      </div>
-      <div class="section section-tabs">
-        <div class="container">
-          <!-- <tabs></tabs> -->
-        </div>
-      </div>
-      <div class="section section-white">
-        <div class="container">
-          <!-- <nav-pills></nav-pills> -->
-        </div>
-      </div>
-      <div class="section section-notifications">
-        <div class="container">
-          <div class="title">
-            <h3>Notifications</h3>
-          </div>
-        </div>
-        <!-- <notifications></notifications> -->
-      </div>
-      <div class="section">
-        <div class="container">
-          <!-- <typography-images></typography-images> -->
-        </div>
-      </div>
-      <div class="section section-javascript">
-        <div class="container">
-          <!-- <javascript-components></javascript-components> -->
-        </div>
-      </div>
-      <div class="section">
-        <div class="container text-center">
-          <div class="md-layout">
-            <div
-              class="md-layout-item md-size-66 md-xsmall-size-100 ml-auto mr-auto text-center"
-            >
-              <h2>Completed with examples</h2>
-              <h4>
-                The kit comes with three pre-built pages to help you get started
-                faster. You can change the text and images and you're good to
-                go. More importantly, looking at them will give you a picture of
-                what you can built with this powerful kit.
-              </h4>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- middle-part -->
+      <middle-part></middle-part>
+
+      <!-- image-grid -->
+      <image-grid></image-grid>
+
+      <!-- Exploer Status -->
+      <exploer-status></exploer-status>
+      
     </div>
   </div>
 </template>
 
 <script>
 // import BasicElements from "./components/BasicElementsSection";
-
+import { Carousel, Slide } from 'vue-carousel';
+import CarouselElement from './components/CarouselElement';
+import WelcomeElement from './components/WelcomeElement';
+import BodySection from './components/BodySection';
+import TotalSearch from './components/TotalSearch';
+import ImageGrid from './components/ImageGrid';
+import MiddlePart from './components/MiddlePart';
+import ExploerStatus from './components/ExploerStatus';
+  
 export default {
+
   name: "index",
   bodyClass: "index-page",
+  components: {
+    Carousel,
+    Slide,
+    CarouselElement,
+    WelcomeElement,
+    BodySection,
+    TotalSearch,
+    ImageGrid,
+    MiddlePart,
+    ExploerStatus
+  },
   props: {
+
     image: {
       type: String,
       default: require("@/assets/img/real-estate.jpg")
+    },
+    leaf4: {
+      type: String,
+      default: require("@/assets/img/leaf4.png")
+    },
+    leaf3: {
+      type: String,
+      default: require("@/assets/img/leaf3.png")
+    },
+    leaf2: {
+      type: String,
+      default: require("@/assets/img/leaf2.png")
+    },
+    leaf1: {
+      type: String,
+      default: require("@/assets/img/leaf1.png")
+    },
+    signup: {
+      type: String,
+      default: require("@/assets/img/city.jpg")
+    },
+    landing: {
+      type: String,
+      default: require("@/assets/img/landing.jpg")
+    },
+    profile: {
+      type: String,
+      default: require("@/assets/img/profile.jpg")
     }
   },
-
   data() {
     return {
+      perPagee: 3,
+      isActive: false,
       firstname: null,
       email: null,
       password: null,
-      leafShow: false
+      leafShow: false,
+      typed_text_flag_i:0,
+      typed_text_flag_j:0,
+      content_text:["that fulfill your needs", "with great investment plans", "with smart choices", "with an amazing ambience"],
+      typed_text_span : this.$refs.typed_text,
+      typed_text_adding: true,
+      cursor_text: this.$refs.cursor,
+      text: "",
+      typed_text_len : 0,
+      typed_text_content: ""
     };
   },
   methods: {
@@ -102,7 +142,12 @@ export default {
       } else {
         this.leafShow = true;
       }
-    }
+    },
+    determinePerPage(){
+      let windowWidth = window.innerWidth;
+      let slideWidth = document.getElementsByClassName("col-sm-4")[0].clientWidth;
+      this.perPagee = Math.floor(windowWidth/slideWidth);
+    },
   },
   computed: {
     headerStyle() {
@@ -118,7 +163,8 @@ export default {
   },
   mounted() {
     this.leafActive();
-    window.addEventListener("resize", this.leafActive);
+    window.addEventListener("resize", this.determinePerPage);
+    this.determinePerPage;
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.leafActive);
@@ -137,4 +183,31 @@ export default {
     display: flex;
   }
 }
+</style>
+<style>
+
+/*--------------- Carousel---css---------------*/
+.section.section-check{
+  width: 100%;
+  padding: 45px 0px 40px 0px;
+  background-color: #FFF;
+}
+.VueCarousel-pagination {
+    position: relative !important;
+    text-align: center;
+}
+.VueCarousel-dot-container>.VueCarousel-dot {
+    border-radius: 50% !important;
+}
+.VueCarousel{
+  width: 100%;
+}
+.VueCarousel-wrapper{
+  width: 100%;
+}
+button:focus{
+  outline: none !important;
+}
+/*------------------Welcome---css--------------*/
+
 </style>
